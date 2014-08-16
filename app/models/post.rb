@@ -3,5 +3,8 @@ class Post
 
   key :title, String
   key :content, String
+  timestamps!
+
+  many :comments
 
 end
