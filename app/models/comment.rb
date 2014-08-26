@@ -1,9 +1,7 @@
 class Comment
-  include MongoMapper::Document
+  include MongoMapper::EmbeddedDocument
 
   key :content, String
   timestamps!
-
-  belongs_to :post
 
 end

@@ -4,13 +4,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.sort(:created_at.desc).page params[:page]
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comment = @post.comments.new
   end
 
   # GET /posts/new
@@ -66,6 +65,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      @comment = @post.comments.build
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
